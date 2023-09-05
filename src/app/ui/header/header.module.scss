@@ -1,0 +1,45 @@
+@import "../../variables.module.scss";
+
+.container {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    font-size: 20px;
+    font-family: ZhenyanGB-Regular, ZhenyanGB;
+    font-weight: bolder;
+    color: $color;
+  }
+  .right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0 40px;
+    .nav {
+      font-size: 16px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: $color;
+      &:hover {
+        color: $color-active;
+      }
+    }
+    .active {
+      color: $color-active;
+    }
+    .registry {
+      display: flex;
+      align-items: center;
+      
+      height: 100%;
+      padding: 0 40px;
+      background-color: $color-active;
+      font-size: 16px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+    }
+  }
+}
