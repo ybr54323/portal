@@ -1,3 +1,3 @@
-export default function Open() {
+export default function News() {
     return <div>new</div>
 }
