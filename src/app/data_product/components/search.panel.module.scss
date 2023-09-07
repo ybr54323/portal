@@ -1,0 +1,59 @@
+@import "@/app/variables.module.scss";
+.container {
+  .top {
+    background-color: #fff;
+    margin: $mb16;
+    padding: 0 24px;
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 0 40px;
+      padding: 16px 0;
+      .key {
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #86909c;
+        line-height: 20px;
+      }
+      .value {
+        color: $color;
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      .active {
+        color: $color-active;
+      }
+    }
+    .divider {
+      margin: 0 auto;
+    }
+  }
+  .bottom {
+    .opWrap {
+      display: flex;
+      align-items: center;
+      .total {
+        margin-right: 24px;
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #051c4a;
+        line-height: 20px;
+      }
+      .iconWrap {
+        @include alignCenter;
+        .icon {
+          margin-right: 12px;
+          cursor: pointer;
+        }
+      }
+      .active {
+        background: #e5e6eb;
+      }
+    }
+  }
+}

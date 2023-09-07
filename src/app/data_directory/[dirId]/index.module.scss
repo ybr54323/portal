@@ -1,0 +1,106 @@
+@import "@/app/variables.module.scss";
+.container {
+  background: $bgColor;
+  .bread {
+    margin: $mb16;
+  }
+
+  .main {
+    padding: 16px 0 97px;
+    width: 1200px;
+    margin: 0 auto;
+    .top {
+      background: #fff;
+      padding: 24px;
+      display: grid;
+      gap: 0 24px;
+      // 图片, 内边距 24 * 3
+      grid-template-columns: 137px minmax(calc(1200px - 137px - 72px), 1fr);
+      margin: $mb16;
+      //   @include ellipsis;
+      .right {
+        max-width: 100%;
+        .title {
+          max-width: 100%;
+          font-size: 18px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: $color;
+          line-height: 25px;
+          margin: $mb16;
+          @include ellipsis;
+        }
+        .content {
+          max-width: 100%;
+          white-space: wrap;
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #4e5969;
+          line-height: 22px;
+          margin: 0 auto 36px;
+          //   @include ellipsis;
+        }
+        .viewWrap {
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #86909c;
+          line-height: 17px;
+          @include ellipsis;
+        }
+      }
+    }
+    .mid {
+      background: #fff;
+      padding: 24px;
+      margin: $mb16;
+      .title {
+        font-size: 16px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #1d2129;
+        line-height: 22px;
+        margin: $mb16;
+      }
+      .row {
+        display: grid;
+        align-items: center;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(5, auto);
+        gap: 8px 24px;
+
+        .key {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #86909c;
+          line-height: 20px;
+        }
+        .val {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          line-height: 20px;
+          color: $color;
+          @include ellipsis;
+        }
+      }
+    }
+    .bottom {
+      background: #fff;
+      padding: 24px;
+      .title {
+        font-size: 16px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        line-height: 22px;
+        margin: $mb16;
+        color: $color;
+        @include ellipsis;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import "@/app/variables.module.scss";
+.container {
+  background-color: $bgColor;
+  .imgWrap {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .name {
+      position: absolute;
+      top: 85px;
+      left: 360px;
+
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 50px;
+    }
+  }
+  .main {
+    padding: 16px 0 76px;
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 284px auto;
+    gap: 0 16px;
+    .left {
+    }
+    .right {
+      .pageWrap {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import '@/app/variables.module.scss';
+.newCard {
+  cursor: pointer;
+  .imgWrap {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+  .date {
+    font-size: 14px;
+    font-family: Kingsoft_Cloud_Font;
+    color: #1d2129;
+    margin: 16px auto 16px;
+  }
+  .title {
+    margin: $mb16;
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #1d2129;
+    line-height: 25px;
+  }
+  .content {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #4e5969;
+    line-height: 22px;
+  }
+}

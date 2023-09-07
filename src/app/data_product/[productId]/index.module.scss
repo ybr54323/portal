@@ -1,0 +1,144 @@
+@import "@/app/variables.module.scss";
+@import "../components/product.module.scss";
+
+@mixin maxWidthWithImg {
+  max-width: calc(820px - 48px - 16px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+@mixin row {
+  @include maxWidthWithImg();
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  margin: 0 auto 8px;
+
+  .key {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #86909c;
+    line-height: 20px;
+  }
+  .value {
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: $color;
+    line-height: 20px;
+  }
+}
+@mixin title {
+  font-size: 16px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: $color;
+  line-height: 22px;
+  margin: $mb16;
+}
+.container {
+  background: $bgColor;
+  padding: 16px 0;
+  .bread {
+    width: 1200px;
+    margin: 0 auto 16px;
+  }
+
+  .main {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 820px 364px;
+    gap: 16px;
+
+    .left {
+      .top {
+        background-color: #fff;
+        padding: 24px;
+        margin: $mb16;
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+
+        .right {
+          .titleWrap {
+            @include titleWrap();
+            @include maxWidthWithImg();
+          }
+          .desc {
+            @include desc();
+            @include maxWidthWithImg();
+          }
+          .content {
+            @include content();
+            @include maxWidthWithImg();
+          }
+          .priceWrap {
+            @include alignCenter();
+
+            @include maxWidthWithImg();
+            border-radius: 4px;
+            padding: 16px 24px;
+            background: rgba(255, 145, 63, 0.07);
+            margin-bottom: 24px;
+            max-width: calc(100%);
+            .count {
+              @include count();
+            }
+            .unit {
+              @include unit();
+            }
+          }
+          .row {
+            @include row();
+          }
+        }
+      }
+
+      .mid {
+        background: #fff;
+        padding: 24px;
+        .title {
+          @include title();
+        }
+        .row {
+          @include row();
+          margin-bottom: 38px;
+        }
+        .tableCon {
+          margin-bottom: 40px;
+          .title {
+            @include title();
+          }
+        }
+        .desc {
+          @include desc();
+        }
+      }
+    }
+    .right {
+      align-self: baseline;
+      padding: 16px 24px;
+      background-color: #fff;
+      .title {
+        @include title();
+      }
+      .tagCon {
+        margin-bottom: 32px;
+      }
+      .linkWrap {
+        @include alignCenter();
+        margin-bottom: 8px;
+        .name {
+          margin-left: 4px;
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #4e5969;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}

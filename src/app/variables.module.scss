@@ -1,3 +1,15 @@
 $color-active: #3470ff;
 $color: #1d2129;
+$transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+$bgColor: #f4f6f9;
+$mb16: 0 auto 16px;
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
+@mixin alignCenter {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,24 @@
+.news {
+  position: relative;
+  .imgWrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+  }
+  .title {
+    position: absolute;
+    top: 85px;
+    left: 360px;
+    font-size: 36px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 50px;
+  }
+  .main {
+    padding: 60px 360px;
+    display: grid;
+    gap: 60px;
+    grid-template-columns: repeat(3, minmax(360px, 1fr));
+  }
+}

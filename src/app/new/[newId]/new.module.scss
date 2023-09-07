@@ -1,0 +1,65 @@
+@import "@/app/variables.module.scss";
+.container {
+  padding: 16px 0 60px;
+  .main {
+    width: 900px;
+    margin: 0 auto;
+
+    .bread {
+      margin: 0 auto 40px;
+    }
+    .title {
+      font-size: 24px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: $color;
+      line-height: 33px;
+      margin: 0 auto 8px;
+    }
+    .date {
+      font-size: 14px;
+      font-family: Kingsoft_Cloud_Font;
+      color: #86909c;
+      line-height: 26px;
+      margin: 0 auto 40px;
+    }
+    .content {
+      font-size: 16px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #1d2129;
+      line-height: 32px;
+      margin: 0 auto 40px;
+    }
+    .imgWrap {
+      width: 900px;
+      height: 424px;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto 60px;
+    }
+    .btnWrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      .btn {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        background: #f2f3f5;
+        gap: 0 24px;
+        cursor: pointer;
+        transition: $transition;
+        &:hover {
+          background: $color-active;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}

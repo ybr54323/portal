@@ -1,0 +1,41 @@
+@import "@/app/variables.module.scss";
+.container {
+  background-color: $bgColor;
+
+  padding-bottom: 150px;
+  .banner {
+    height: 167px;
+    background: no-repeat url("../../image/data_product.banner.webp");
+    .wrap {
+      width: 1200px;
+      margin: 0 auto;
+      padding: 60px 0 0;
+      .search {
+        width: 100%;
+        // height: 48px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  .main {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 16px 0 0;
+  }
+  .cardCon {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, calc((100% - 24px) / 4));
+  }
+  .listCon {
+
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 8px 0;
+  }
+}

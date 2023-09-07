@@ -1,7 +1,9 @@
-export default function NewLayout({children,...op}) {
-    return <div>
-        
-        
-        new:
-        {children}</div>
+"use client";
+
+export default function NewLayout({ children }) {
+  return (
+    <div>
+      {children}
+    </div>
+  );
 }
