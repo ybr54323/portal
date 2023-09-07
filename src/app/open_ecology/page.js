@@ -8,7 +8,7 @@ export default function Open() {
   return (
     <div className={style.container}>
       <div className={style.banner}>
-        <Image alt="banner" fill={true} objectFit="cover" src={imgBanner} />
+        <Image className='hover-img' alt="banner" fill={true} objectFit="cover" src={imgBanner} />
         <div className={style.title}>开放生态</div>
       </div>
       <div className={style.main}>

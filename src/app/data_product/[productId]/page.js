@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import style from "./index.module.scss";
 import iconLink from "@/image/link.webp";
+import img from "@/image/new1.webp";
 const columns = [
   {
     title: "序号",
@@ -61,7 +62,13 @@ export default function DataDirectory({ params }) {
       <div className={style.main}>
         <div className={style.left}>
           <div className={style.top}>
-            <Image alt="product image" width={48} height={48} />
+            <Image
+              objectFit="cover"
+              src={img}
+              alt="product image"
+              width={48}
+              height={48}
+            />
             <div className={style.right}>
               <div className={style.titleWrap}>
                 <Tag>API</Tag>
@@ -124,7 +131,7 @@ export default function DataDirectory({ params }) {
               部场景，营销拓客，企业建站，办公协同，财税工商，运维管理，安全防护，企业代办，合同法务，线上开店，销售管理，仓储物流，采购管理，生产管理，人力薪酬，数据分析，小程序生态，API服务，直播视频，政府/园区服务
             </div>
             <div className={style.title}>产品详情</div>
-            <Image width={773} height={435} alt="product detail" />
+            <Image src={img} width={773} height={435} alt="product detail" />
           </div>
         </div>
         <div className={style.right}>

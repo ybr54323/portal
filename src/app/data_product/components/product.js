@@ -1,10 +1,12 @@
 "use client";
-import { useSearchParams, usePathname } from "next/navigation";
+
 import style from "./product.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { Tag, Divider } from "antd";
+import { useNavigation } from "@/util";
 
+import img from "@/image/new1.webp";
 export default function Product({
   id,
   title,
@@ -15,8 +17,7 @@ export default function Product({
   count,
   type,
 }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const { pathname, searchParams } = useNavigation();
   const viewType = searchParams.get("viewType") || "card";
 
   return (
@@ -24,9 +25,11 @@ export default function Product({
       {viewType === "card" ? (
         <div className={style.card}>
           <Image
+            src={img}
             width={40}
             height={40}
             alt="product img card"
+            objectFit="cover"
             className={style.img}
           ></Image>
 
@@ -50,9 +53,11 @@ export default function Product({
       ) : (
         <div className={style.list}>
           <Image
+            src={img}
             width={48}
             height={48}
             alt="product img list"
+            objectFit="cover"
             className={style.img}
           ></Image>
           <div className={style.right}>
