@@ -1,6 +1,13 @@
-@import '@/app/variables.module.scss';
+@import "@/app/variables.module.scss";
 .newCard {
   cursor: pointer;
+
+  &:hover {
+    .title {
+  transition: $transition;
+      color: $color-active;
+    }
+  }
   .imgWrap {
     position: relative;
     width: 100%;
