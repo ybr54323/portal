@@ -1,5 +1,5 @@
 variables:
-  APP_NAME: 'grg-public-data-portal-web'
+  APP_NAME: "grg-public-data-portal-web"
 
 stages:
   - install
@@ -20,17 +20,17 @@ install_job:
       - v1.0
       - dev-grg
       - /.*release.*/
-      - /.*RELEASE.*/       
-      - /.*prj-.*/       
+      - /.*RELEASE.*/
+      - /.*prj-.*/
       - /.*-SNAPSHOT.*/
       - dev-same-return
       - feat-login
     changes:
       - package.json
   script:
-    - npm install --registry http://10.252.37.250:4873 --unsafe-perm=true --allow-root
-  tags: 
-   - share
+    - npm install --unsafe-perm=true --allow-root
+  tags:
+    - share
 
 build_job:
   stage: build
@@ -40,16 +40,16 @@ build_job:
     - /^test*.*$/
     - dev-grg
     - /.*release.*/
-    - /.*RELEASE.*/       
-    - /.*prj-.*/     
+    - /.*RELEASE.*/
+    - /.*prj-.*/
     - /.*-SNAPSHOT.*/
     - dev-same-return
     - feat-login
   script:
     - npm run build --unsafe-perm=true --allow-root
     - ls -al
-  tags: 
-   - share
+  tags:
+    - share
   artifacts:
     expire_in: 3 days
     paths:
@@ -63,12 +63,12 @@ deploy_job:
     - /^test*.*$/
     - dev-grg
     - /.*release.*/
-    - /.*prj-.*/    
+    - /.*prj-.*/
     - /.*-SNAPSHOT.*/
     - dev-same-return
     - feat-login
   tags:
-   - share
+    - share
   script:
     - docker login -u "clxu" -p "grg@2018clxu" $CI_REGISTRY
     - docker build -t "10.1.7.220/aicore/grg-public-data-portal-web:$CI_COMMIT_REF_SLUG" --platform=linux/amd64 . --push
@@ -80,6 +80,4 @@ deploy_job:
       fi
     - deploy $CI_COMMIT_REF_SLUG "grg-public-data-portal-web"
 
- 
   when: on_success
-
