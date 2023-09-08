@@ -6,27 +6,19 @@ stages:
   - build
   - deploy
 
-cache:
-  key: ${CI_BUILD_REF_NAME}
-  paths:
-    - node_modules/
+# cache:
+#   key: ${CI_BUILD_REF_NAME}
+#   paths:
+#     - node_modules/
 
 install_job:
   stage: install
   only:
     refs:
       - dev
-      - /^test*.*$/
-      - v1.0
-      - dev-grg
-      - /.*release.*/
-      - /.*RELEASE.*/
-      - /.*prj-.*/
-      - /.*-SNAPSHOT.*/
-      - dev-same-return
-      - feat-login
-    changes:
-      - package.json
+
+    # changes:
+    #   - package.json
   script:
     - npm install --unsafe-perm=true --allow-root
   tags:
@@ -36,15 +28,7 @@ build_job:
   stage: build
   only:
     - dev
-    - v1.0
-    - /^test*.*$/
-    - dev-grg
-    - /.*release.*/
-    - /.*RELEASE.*/
-    - /.*prj-.*/
-    - /.*-SNAPSHOT.*/
-    - dev-same-return
-    - feat-login
+
   script:
     - npm run build --unsafe-perm=true --allow-root
     - ls -al
@@ -59,14 +43,7 @@ deploy_job:
   stage: deploy
   only:
     - dev
-    - v1.0
-    - /^test*.*$/
-    - dev-grg
-    - /.*release.*/
-    - /.*prj-.*/
-    - /.*-SNAPSHOT.*/
-    - dev-same-return
-    - feat-login
+
   tags:
     - share
   script:
