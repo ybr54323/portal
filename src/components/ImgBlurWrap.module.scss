@@ -1,0 +1,28 @@
+@import "@/app/variables.module.scss";
+.container {
+  position: relative;
+  .bg {
+    position: absolute;
+  }
+  @mixin position {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+  }
+  .descLayer {
+    @include position();
+    backdrop-filter: blur(9px);
+  }
+  .desc {
+    @include position();
+    @include alignCenter();
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #ffffff;
+  }
+}

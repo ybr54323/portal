@@ -1,0 +1,59 @@
+@import "@/app/variables.module.scss";
+.container {
+  position: relative;
+
+  .banner {
+    position: relative;
+    height: 380px;
+    padding: 119px 0 150px 360px;
+
+    .bannerTitle {
+      position: relative;
+      font-size: 40px;
+      font-family: Helvetica;
+      color: #ffffff;
+      line-height: 57px;
+      letter-spacing: 2px;
+      margin: 0 auto 14px;
+    }
+    .subTitle {
+      position: relative;
+      width: 504px;
+      height: 40px;
+      font-size: 28px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 40px;
+    }
+  }
+  .title {
+    text-align: center;
+    font-size: 32px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #1d2129;
+    line-height: 45px;
+  }
+  @mixin paddingTop {
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
+  .flow {
+    height: 639px;
+    background: #e0eaf2;
+    @include paddingTop();
+  }
+  .provide {
+    background-color: #fff;
+    height: 1029px;
+    @include paddingTop();
+  }
+  .scene {
+    height: 651px;
+    padding-top: 80px;
+    box-sizing: border-box;
+    @include paddingTop();
+    padding-top: 96px;
+  }
+}

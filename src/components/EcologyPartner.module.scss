@@ -1,0 +1,40 @@
+// $width: 3006px;
+.container {
+  padding: 74px 0 86px;
+  position: relative;
+
+  .title {
+    text-align: center;
+    font-size: 32px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #1d2129;
+    line-height: 45px;
+    margin-bottom: 60px;
+  }
+  .animateCon {
+    // max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    .animateWrap {
+      width: 3006px;
+      animation: scroll 28s linear infinite;
+    }
+  }
+  .reverse {
+
+    .animateWrap {
+      width: 3006px;
+      animation: scroll 28s linear infinite reverse;
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-3006px, 0, 0);
+  }
+}

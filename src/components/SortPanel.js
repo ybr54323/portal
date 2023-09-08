@@ -2,18 +2,10 @@
 import style from "./sort.panel.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { Input } from "antd";
+import { genSortHref, genSortIconSrc, useNavigation } from "@/util";
 
-import { genHref, genImgSrc } from "@/util";
-const { Search } = Input;
-
-export default function SortPanel({
-  list = [],
-  children,
-  onKeywordChange = () => {},
-}) {
-  const searchParams = useSearchParams();
+export default function SortPanel({ list = [], children }) {
+  const { searchParams, pathname } = useNavigation();
 
   return (
     <div className={style.searchBox}>
@@ -26,7 +18,11 @@ export default function SortPanel({
               style.sortBtn,
               item.dataIndex === searchParams.get("sort") && style.active,
             ].join(" ")}
-            href={genHref(item)}
+            href={genSortHref({
+              searchParams,
+              pathname,
+              dataIndex: item.dataIndex,
+            })}
           >
             {item.title}
 
@@ -34,25 +30,13 @@ export default function SortPanel({
               className={style.icon}
               width={6}
               height={10}
-              src={genImgSrc(item)}
+              src={genSortIconSrc({ searchParams, dataIndex: item.dataIndex })}
               alt="排序"
             ></Image>
           </Link>
         ))}
       </div>
-      <div className={style.right}>
-        {children}
-        {/* {children && children.length ? (
-          { children }
-        ) : (
-          <Search
-            allowClear
-            placeholder="请输入关键字"
-            onSearch={onKeywordChange}
-            enterButton
-          />
-        )} */}
-      </div>
+      <div className={style.right}>{children}</div>
     </div>
   );
 }

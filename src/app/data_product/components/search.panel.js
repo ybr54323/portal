@@ -5,7 +5,7 @@ import { Divider } from "antd";
 import Link from "next/link";
 import Image from "next/image";
 import { bizList, goodList } from "./service";
-import SortPanel from "@/components/sort.panel";
+import SortPanel from "@/components/SortPanel";
 import { genKeyValueHref, handleUpdateQuery, useNavigation } from "@/util";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
@@ -111,7 +111,12 @@ export default function SearchPanel() {
             <div className={style.total}>共 x 个</div>
             <Link
               className={style.iconWrap}
-              href={genKeyValueHref("viewType", "card")}
+              href={genKeyValueHref({
+                pathname,
+                searchParams,
+                key: "viewType",
+                val: "card",
+              })}
             >
               <Image
                 className={[
@@ -126,7 +131,12 @@ export default function SearchPanel() {
             </Link>
             <Link
               className={style.iconWrap}
-              href={genKeyValueHref("viewType", "list")}
+              href={genKeyValueHref({
+                pathname,
+                searchParams,
+                key: "viewType",
+                val: "list",
+              })}
             >
               <Image
                 className={[

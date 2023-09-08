@@ -1,92 +1,120 @@
-@import '@/app/variables.module.scss';
+@import "@/app/variables.module.scss";
 
 .container {
+  position: relative;
+  height: 2033px;
+  padding: 85px calc((100vw - 1200px) / 2) 0;
+
+  .bg {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .title {
     position: relative;
-    height: 2033px;
-    padding: 85px 360px 0;
+    z-index: 1;
+    font-size: 36px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 50px;
+    margin: 0 auto 285px;
+  }
 
-    .bg {
-        width: 100%;
+  .con {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    align-items: center;
+    gap: 80px;
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 105px;
+
+    .left {
+      flex: 0 0 460px;
+
+      .title {
+        font-size: 28px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ffffff;
+        line-height: 40px;
+        margin: 0 auto 20px;
+      }
+
+      .content {
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 24px;
+        margin: 0 auto 30px;
+      }
+      .row {
+        @include alignCenter();
+        gap: 8px;
+        .desc {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 30px;
+        }
+      }
+
+      .btn {
+        @include alignCenter();
+        cursor: pointer;
+        padding: 16px;
+        height: 44px;
+        background: $color-active;
+        color: #fff;
+        margin: 30px auto 0;
+
+        .icon {
+          margin-left: 16px;
+        }
+      }
+    }
+
+    .right {
+      opacity: 0;
+      position: relative;
+      width: 670px;
+      height: 420px;
+      transition: $transition;
+
+      .leftMove {
         position: absolute;
-        z-index: 0;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-
+        bottom: 30px !important;
+        right: 30px !important;
+      }
+      .rightMove {
+        position: absolute;
+        bottom: 30px !important;
+        left: 30px !important;
+      }
     }
-
+  }
+  .bottom {
     .title {
-        position: relative;
-        z-index: 1;
-        font-size: 36px;
-        font-family: PingFangSC-Semibold, PingFang SC;
-        font-weight: 600;
-        color: #FFFFFF;
-        line-height: 50px;
-        margin: 0 auto 285px;
+      text-align: center;
+      font-size: 32px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 45px;
     }
-
-    .con {
-        // @include alignCenter();
-        display: grid;
-        // grid-template-columns: 460px 670px;
-        grid-template-columns: repeat(2, 1fr);
-
-        align-items: center;
-        gap: 80px;
-        position: relative;
-        z-index: 1;
-
-        margin-bottom: 105px;
-
-        .left {
-            flex: 0 0 460px;
-
-            .title {
-                font-size: 28px;
-                font-family: PingFangSC-Medium, PingFang SC;
-                font-weight: 500;
-                color: #FFFFFF;
-                line-height: 40px;
-                margin: 0 auto 20px;
-            }
-
-            .content {
-                font-size: 14px;
-                font-family: PingFangSC-Regular, PingFang SC;
-                font-weight: 400;
-                color: #FFFFFF;
-                line-height: 24px;
-                margin: 0 auto 30px;
-            }
-
-            .btn {
-                @include alignCenter();
-                cursor: pointer;
-                padding: 16px;
-                height: 44px;
-                background: $color-active;
-                color: #fff;
-
-                .icon {
-                    margin-left: 16px;
-                }
-            }
-
-
-        }
-
-        .right {
-            opacity: 0;
-            position: relative;
-            width: 670px;
-            height: 420px;
-            transition: $transition;
-            // transition: all .5 ease;
-            // transform: translate3d(0, 100px , 0);
-        }
-
-
+    .stepCon {
+      width: 1200px;
+      margin: 0 auto;
     }
+  }
 }

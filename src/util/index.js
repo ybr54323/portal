@@ -24,20 +24,15 @@ const handleUpdateQuery = ({ pathname, searchParams, router, key, val }) => {
 };
 
 // 生成kv对的href
-const genKeyValueHref = (key, value) => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+const genKeyValueHref = ({ pathname, searchParams, key, value }) => {
   const nextQuery = new URLSearchParams(searchParams);
-
   nextQuery.set(key, value);
   const href = pathname + "?" + nextQuery.toString();
   return href;
 };
 
 // 生成排序的href
-const genHref = ({ dataIndex }) => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+const genSortHref = ({ pathname, searchParams, dataIndex }) => {
   const currentSort = searchParams.get("sort");
   const nextQuery = new URLSearchParams(searchParams);
   // 换了sort类型, 或者还没sort过
@@ -62,11 +57,16 @@ const genHref = ({ dataIndex }) => {
   const href = pathname + "?" + nextQuery.toString();
   return href;
 };
-const genImgSrc = ({ dataIndex }) => {
-  const searchParams = useSearchParams();
+const genSortIconSrc = ({ searchParams, dataIndex }) => {
   const sort = searchParams.get("sort");
   if (sort !== dataIndex) return iconSort;
   const order = searchParams.get("order");
   return order === ASC ? iconSortUp : order === DESC ? iconSortDown : iconSort;
 };
-export { genKeyValueHref, genHref, genImgSrc, handleUpdateQuery, useNavigation };
+export {
+  genKeyValueHref,
+  genSortHref,
+  genSortIconSrc,
+  useNavigation,
+  handleUpdateQuery,
+};

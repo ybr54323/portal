@@ -1,0 +1,51 @@
+@import "@/app/variables.module.scss";
+.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-items: center;
+  // grid-template-columns: ;
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .img {
+      margin: 0 auto 24px;
+    }
+    .point {
+      z-index: 1;
+      position: relative;
+      width: 9px;
+      height: 9px;
+      background: #00d6b9;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+    }
+    .line {
+      z-index: 0;
+      position: absolute;
+      transform: translate3d(0, -9px, 0);
+      left: 0;
+      right: 0;
+      height: 1px;
+      opacity: 0.3;
+      border: 1px solid #00d6b9;
+    }
+    .title {
+      font-size: 18px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 25px;
+      margin: 0 auto 8px;
+    }
+    .desc {
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 24px;
+    }
+  }
+}

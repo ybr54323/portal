@@ -28,10 +28,10 @@ const navList = [
     title: "新闻动态",
     href: "/new",
   },
-  {
-    title: "登录",
-    href: "/login",
-  },
+  // {
+  //   title: "登录",
+  //   href: "/login",
+  // },
 ];
 export default function Header() {
   const pathname = usePathname();
@@ -52,7 +52,7 @@ export default function Header() {
             </Link>
           );
         })}
-        <Link className={style.registry} href='/registry'>免费注册</Link>
+        {/* <Link className={style.registry} href='/registry'>免费注册</Link> */}
       </div>
     </div>
   );

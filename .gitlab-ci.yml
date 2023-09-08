@@ -1,0 +1,85 @@
+variables:
+  APP_NAME: 'grg-public-data-portal-web'
+
+stages:
+  - install
+  - build
+  - deploy
+
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+
+install_job:
+  stage: install
+  only:
+    refs:
+      - dev
+      - /^test*.*$/
+      - v1.0
+      - dev-grg
+      - /.*release.*/
+      - /.*RELEASE.*/       
+      - /.*prj-.*/       
+      - /.*-SNAPSHOT.*/
+      - dev-same-return
+      - feat-login
+    changes:
+      - package.json
+  script:
+    - npm install --registry http://10.252.37.250:4873 --unsafe-perm=true --allow-root
+  tags: 
+   - share
+
+build_job:
+  stage: build
+  only:
+    - dev
+    - v1.0
+    - /^test*.*$/
+    - dev-grg
+    - /.*release.*/
+    - /.*RELEASE.*/       
+    - /.*prj-.*/     
+    - /.*-SNAPSHOT.*/
+    - dev-same-return
+    - feat-login
+  script:
+    - npm run build --unsafe-perm=true --allow-root
+    - ls -al
+  tags: 
+   - share
+  artifacts:
+    expire_in: 3 days
+    paths:
+      - ./dist/**
+
+deploy_job:
+  stage: deploy
+  only:
+    - dev
+    - v1.0
+    - /^test*.*$/
+    - dev-grg
+    - /.*release.*/
+    - /.*prj-.*/    
+    - /.*-SNAPSHOT.*/
+    - dev-same-return
+    - feat-login
+  tags:
+   - share
+  script:
+    - docker login -u "clxu" -p "grg@2018clxu" $CI_REGISTRY
+    - docker build -t "10.1.7.220/aicore/grg-public-data-portal-web:$CI_COMMIT_REF_SLUG" --platform=linux/amd64 . --push
+    - docker rmi "10.1.7.220/aicore/grg-public-data-portal-web:$CI_COMMIT_REF_SLUG"
+    - |
+      if [[ $CI_COMMIT_REF_SLUG =~ "prj-" ]] || [[ $CI_COMMIT_REF_SLUG =~ "-snapshot" ]] || [[ $CI_COMMIT_REF_SLUG =~ "-release" ]]; then
+      docker build -t "10.1.7.220/aicore/arm64/grg-public-data-portal-web:$CI_COMMIT_REF_SLUG" --platform=linux/arm64 . --push
+      docker rmi "10.1.7.220/aicore/arm64/grg-public-data-portal-web:$CI_COMMIT_REF_SLUG"
+      fi
+    - deploy $CI_COMMIT_REF_SLUG "grg-public-data-portal-web"
+
+ 
+  when: on_success
+

@@ -73,9 +73,9 @@ export default function Sider() {
 
   useEffect(() => {
     if (!currentType) return;
-    const tmp = tree.find((item) => item.type === currentType).list;
+    const tmp = tree.find((item) => item.type === currentType)?.list;
 
-    if (!tmp.length) return;
+    if (!tmp?.length) return;
 
     const list = [
       {
@@ -97,7 +97,12 @@ export default function Sider() {
               style.btn,
               item.type === currentType && style.active,
             ].join(" ")}
-            href={genKeyValueHref("type", item.type)}
+            href={genKeyValueHref({
+              pathname,
+              searchParams,
+              key: "type",
+              value: item.type,
+            })}
           >
             {item.title}
           </Link>

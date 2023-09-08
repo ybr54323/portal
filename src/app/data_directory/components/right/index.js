@@ -3,16 +3,13 @@ import style from "./index.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { Input } from "antd";
-import { genHref, genImgSrc } from "@/util";
-import { useSearchParams } from "next/navigation";
+import { useNavigation } from "@/util";
+import SortPanel from "@/components/SortPanel";
 
 const { Search } = Input;
 
-export default function RightPanel({
-  children,
-  onKeywordChange,
-}) {
-  const searchParams = useSearchParams();
+export default function RightPanel({ children, onKeywordChange }) {
+  const { searchParams } = useNavigation();
   const sortList = [
     {
       dataIndex: "count",
@@ -26,39 +23,15 @@ export default function RightPanel({
 
   return (
     <div className={style.container}>
-      <div className={style.searchBox}>
-        <div className={style.left}>
-          <div className={style.label}>综合排序</div>
-          {sortList.map((item) => (
-            <Link
-              key={item.dataIndex}
-              className={[
-                style.sortBtn,
-                item.dataIndex === searchParams.get("sort") && style.active,
-              ].join(" ")}
-              href={genHref(item)}
-            >
-              {item.title}
-
-              <Image
-                className={style.icon}
-                width={6}
-                height={10}
-                src={genImgSrc(item)}
-                alt="排序"
-              ></Image>
-            </Link>
-          ))}
-        </div>
-        <div className={style.right}>
-          <Search
-            allowClear
-            placeholder="请输入关键字"
-            onSearch={onKeywordChange}
-            enterButton
-          />
-        </div>
-      </div>
+      <SortPanel list={sortList}>
+        <Search
+          allowClear
+          placeholder="请输入关键字"
+          onSearch={onKeywordChange}
+          enterButton
+          defaultValue={searchParams.get("keyword") || ""}
+        />
+      </SortPanel>
 
       <div className={style.cardCon}>{children}</div>
     </div>

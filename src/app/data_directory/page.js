@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import style from "./data_dir.module.scss";
 import banner from "@/image/data_directory.banner.webp";
 import Dir from "./components/leftDir";
@@ -9,9 +8,10 @@ import Card from "./components/right/card";
 import { useDirList } from "./service";
 import { Pagination } from "antd";
 import { useImmer } from "use-immer";
+import { useNavigation, handleUpdateQuery } from "@/util";
 
 export default function DataDirectoryList() {
-  const router = useRouter();
+  const { router, searchParams, pathname } = useNavigation();
 
   const [query, setQuery] = useImmer({
     pageNum: 1,
@@ -31,6 +31,13 @@ export default function DataDirectoryList() {
   const handleKeywordChange = (keyword) => {
     setQuery((draft) => {
       draft.keyword = keyword;
+    });
+    handleUpdateQuery({
+      pathname,
+      searchParams,
+      router,
+      key: "keyword",
+      val: keyword,
     });
   };
   const handleViewDir = (dirId) => {
