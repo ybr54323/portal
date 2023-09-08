@@ -53,7 +53,7 @@ build_job:
   artifacts:
     expire_in: 3 days
     paths:
-      - ./dist/**
+      - ./out/**
 
 deploy_job:
   stage: deploy
